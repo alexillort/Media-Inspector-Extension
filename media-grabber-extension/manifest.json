@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Open Media Grabber",
+  "version": "0.1.0",
+  "description": "Detecta y descarga medios directos y streams HLS no cifrados desde páginas web.",
+  "permissions": ["downloads", "storage", "tabs", "webRequest", "offscreen"],
+  "host_permissions": ["<all_urls>"],
+  "background": {"service_worker": "sw.js"},
+  "action": {"default_popup": "popup.html", "default_title": "Open Media Grabber"},
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["content.js"],
+    "run_at": "document_idle",
+    "all_frames": true
+  }],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
