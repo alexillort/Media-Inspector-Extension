@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Media Inspector</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <div class="brand-row">
+          <span class="logo">M</span>
+          <h1>Media Inspector</h1>
+          <button id="refresh" class="icon-button" title="Volver a analizar" aria-label="Volver a analizar">↻</button>
+        </div>
+        <p id="site" class="site">Analizando la página…</p>
+      </div>
+    </header>
+
+    <main>
+      <nav id="tabs" class="tabs" aria-label="Tipos de recurso">
+        <button class="tab active" data-kind="video">Videos <span>0</span></button>
+        <button class="tab" data-kind="image">Imágenes <span>0</span></button>
+        <button class="tab" data-kind="gif">GIF <span>0</span></button>
+        <button class="tab" data-kind="svg">SVG <span>0</span></button>
+        <button class="tab" data-kind="font">Fuentes <span>0</span></button>
+      </nav>
+
+      <section class="tools">
+        <label class="search-wrap">
+          <span>⌕</span>
+          <input id="search" type="search" placeholder="Filtrar recursos" autocomplete="off">
+        </label>
+        <label class="best-toggle" title="Agrupa variantes similares y conserva la de mayor resolución">
+          <input id="bestOnly" type="checkbox" checked>
+          <span>Solo mejor calidad</span>
+        </label>
+      </section>
+
+      <section class="advanced-tools">
+        <select id="imageFilter" title="Filtrar imágenes" aria-label="Filtrar imágenes">
+          <option value="all">Todas las imágenes</option>
+          <option value="visible">Solo visibles</option>
+          <option value="large">Grandes (≥ 500 px)</option>
+          <option value="original">Originales / alta resolución</option>
+        </select>
+        <button id="captureAll" class="secondary" title="Busca imágenes diferidas, originales, fondos y recursos ya cargados">Capturar todas</button>
+        <label class="page-buttons" title="Muestra un botón de descarga sobre imágenes, videos y SVG dentro de la página">
+          <input id="pageButtons" type="checkbox" checked>
+          <span>Botones en página</span>
+        </label>
+      </section>
+
+      <section id="notice" class="notice hidden"></section>
+      <section id="status" class="status">Buscando recursos…</section>
+      <section id="results" class="results" aria-live="polite"></section>
+    </main>
+
+    <footer>
+      <button id="downloadAll" class="primary" disabled>Descargar categoría</button>
+      <p>Úsala únicamente con contenido que tengas derecho a descargar.</p>
+    </footer>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
